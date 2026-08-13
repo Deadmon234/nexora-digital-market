@@ -1,0 +1,4 @@
+- [x] Vérifier que le dossier `.github` existe.
+- [x] Créer un projet de base Next.js + Spring Boot.
+- [x] Écrire la structure initiale du frontend et du backend.
+- [x] Fournir un README clair pour démarrage.

@@ -1,0 +1,20 @@
+# Root ignores
+node_modules/
+*.log
+*.tmp
+.DS_Store
+.vscode/
+
+# IDE
+.idea/
+*.iml
+
+# build
+dist/
+build/
+
+# Java
+*.class
+*.jar
+*.war
+target/
