@@ -1,0 +1,5 @@
+marketplace:
+  jwt:
+    secret: test-secret-key-for-integration-tests-only-32chars
+  cors:
+    allowed-origins: http://localhost:3000

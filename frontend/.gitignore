@@ -4,3 +4,4 @@ out/
 coverage/
 .env*
 .DS_Store
+*.tsbuildinfo
