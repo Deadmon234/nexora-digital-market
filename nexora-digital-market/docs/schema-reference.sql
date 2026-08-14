@@ -1,0 +1,3 @@
+-- Nexora Digital Market — schéma de référence (documentation)
+-- Les tables sont générées par Hibernate (ddl-auto=update en dev).
+-- Voir docs/DATABASE.md pour le détail des tables.

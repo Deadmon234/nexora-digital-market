@@ -1,0 +1,23 @@
+# Root ignores
+node_modules/
+*.log
+*.tmp
+.DS_Store
+.vscode/
+
+# IDE
+.idea/
+*.iml
+
+# Environment
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env.local
+
+# Java
+*.class
+*.jar
+*.war
+target/
