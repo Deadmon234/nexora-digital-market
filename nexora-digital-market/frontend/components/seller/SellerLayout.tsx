@@ -29,11 +29,11 @@ export function SellerLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f3f6fa]">
       <Navbar />
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 lg:flex-row">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:flex-row lg:px-8 lg:py-8">
         <SellerSidebar />
-        <div className="flex-1">{children}</div>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
     </div>
   );
