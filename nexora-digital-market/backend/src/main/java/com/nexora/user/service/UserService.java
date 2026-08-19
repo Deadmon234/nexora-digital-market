@@ -3,6 +3,8 @@ package com.nexora.user.service;
 import com.nexora.auth.dto.RegisterRequest;
 import com.nexora.common.enums.RoleName;
 import com.nexora.common.exception.ValidationException;
+import com.nexora.common.util.InputSanitizer;
+import com.nexora.common.util.PasswordValidator;
 import com.nexora.user.dto.UpdateUserProfileRequest;
 import com.nexora.user.dto.UserProfileDto;
 import com.nexora.user.entity.Role;
@@ -35,7 +37,8 @@ public class UserService {
 
     @Transactional
     public User register(RegisterRequest request) {
-        String email = request.getEmail().toLowerCase().trim();
+        String email = InputSanitizer.sanitizeEmail(request.getEmail());
+        PasswordValidator.validate(request.getPassword());
 
         if (userRepository.existsByEmail(email)) {
             throw new ValidationException("Cet email est déjà utilisé");
@@ -52,9 +55,9 @@ public class UserService {
         User user = User.builder()
                 .email(email)
                 .password(passwordEncoder.encode(request.getPassword()))
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .phone(request.getPhone())
+                .firstName(InputSanitizer.sanitizeText(request.getFirstName()))
+                .lastName(InputSanitizer.sanitizeText(request.getLastName()))
+                .phone(InputSanitizer.sanitizeText(request.getPhone()))
                 .enabled(true)
                 .roles(Set.of(role))
                 .build();

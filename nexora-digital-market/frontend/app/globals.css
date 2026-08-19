@@ -10,4 +10,14 @@ body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #f8fafc;
+  color: #0f172a;
+}
+
+@layer utilities {
+  .text-gradient-nexora {
+    background: linear-gradient(90deg, #2563eb 0%, #84cc16 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }

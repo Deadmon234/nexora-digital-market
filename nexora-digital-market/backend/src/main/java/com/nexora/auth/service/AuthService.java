@@ -11,6 +11,7 @@ import com.nexora.auth.security.UserPrincipal;
 import com.nexora.common.enums.RoleName;
 import com.nexora.common.exception.NexoraAuthenticationException;
 import com.nexora.common.exception.ValidationException;
+import com.nexora.security.audit.AuditService;
 import com.nexora.user.entity.User;
 import com.nexora.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -32,27 +33,35 @@ public class AuthService {
     private final JwtProvider jwtProvider;
     private final JwtProperties jwtProperties;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final AuditService auditService;
 
     @Transactional
     public AuthResponse register(RegisterRequest request) {
         User user = userService.register(request);
+        auditService.log("REGISTER", user.getEmail(), true, "Inscription réussie");
         return buildAuthResponse(new UserPrincipal(user));
     }
 
     @Transactional
     public AuthResponse login(LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail().toLowerCase().trim(),
-                        request.getPassword()
-                )
-        );
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail().toLowerCase().trim(),
+                            request.getPassword()
+                    )
+            );
 
-        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
-        refreshTokenRepository.revokeAllByUser(
-                userService.findByEmail(principal.getEmail())
-        );
-        return buildAuthResponse(principal);
+            UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+            refreshTokenRepository.revokeAllByUser(
+                    userService.findByEmail(principal.getEmail())
+            );
+            auditService.log("LOGIN", principal.getEmail(), true, "Connexion réussie");
+            return buildAuthResponse(principal);
+        } catch (Exception ex) {
+            auditService.log("LOGIN", request.getEmail(), false, "Échec de connexion");
+            throw ex;
+        }
     }
 
     @Transactional
@@ -76,6 +85,7 @@ public class AuthService {
         refreshTokenRepository.findByToken(refreshTokenValue).ifPresent(token -> {
             token.setRevoked(true);
             refreshTokenRepository.save(token);
+            auditService.log("LOGOUT", token.getUser().getEmail(), true, "Déconnexion");
         });
     }
 

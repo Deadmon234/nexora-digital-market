@@ -29,7 +29,7 @@ export function AdminSidebar() {
               key={link.href}
               href={link.href}
               className={`block rounded-lg px-3 py-2 text-sm font-medium ${
-                active ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'
+                active ? 'bg-nexora-blue text-white' : 'text-slate-700 hover:bg-nexora-blue/5 hover:text-nexora-blue'
               }`}
             >
               {link.label}

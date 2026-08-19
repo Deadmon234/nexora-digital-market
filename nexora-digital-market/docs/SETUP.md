@@ -30,8 +30,8 @@ docker compose up -d
 
 Cela crée :
 - **Base** : `nexora_dev`
-- **Utilisateur** : `nexora`
-- **Mot de passe** : `nexora`
+- **Utilisateur** : `postgres`
+- **Mot de passe** : `root`
 - **Port** : `5432`
 
 Vérifier que le conteneur est prêt :
@@ -138,3 +138,5 @@ java -version
 ## Prochaine étape
 
 Phase 2 — Authentification JWT. Voir [ROADMAP.md](../ROADMAP.md).
+
+Pour PostgreSQL via Docker, voir [DOCKER.md](./DOCKER.md).

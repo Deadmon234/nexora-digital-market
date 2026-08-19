@@ -4,7 +4,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Nexora Digital Market',
-  description: 'Plateforme e-commerce multi-vendeurs',
+  description: 'Construisons votre avenir numérique — marketplace e-commerce multi-vendeurs',
+  icons: { icon: '/images/nexora-logo.png' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

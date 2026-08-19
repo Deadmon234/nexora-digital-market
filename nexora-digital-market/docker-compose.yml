@@ -5,14 +5,14 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_DB: nexora_dev
-      POSTGRES_USER: nexora
-      POSTGRES_PASSWORD: nexora
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
     ports:
       - "5432:5432"
     volumes:
       - nexora_pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U nexora -d nexora_dev"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d nexora_dev"]
       interval: 5s
       timeout: 5s
       retries: 5

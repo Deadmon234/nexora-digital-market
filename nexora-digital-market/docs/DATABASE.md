@@ -9,8 +9,8 @@
 | Hôte | `localhost` |
 | Port | `5432` |
 | Base | `nexora_dev` |
-| Utilisateur | `nexora` |
-| Mot de passe | `nexora` |
+| Utilisateur | `postgres` |
+| Mot de passe | `root` |
 
 ## Diagramme des relations (Phase 1)
 
@@ -200,7 +200,7 @@ Au démarrage en profil `dev`, les rôles système sont créés automatiquement 
 
 ```bash
 # Accéder à PostgreSQL
-docker exec -it nexora-postgres psql -U nexora -d nexora_dev
+docker exec -it nexora-postgres psql -U postgres -d nexora_dev
 
 # Lister les tables
 \dt

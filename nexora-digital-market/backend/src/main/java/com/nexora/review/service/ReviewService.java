@@ -2,6 +2,7 @@ package com.nexora.review.service;
 
 import com.nexora.common.exception.ResourceNotFoundException;
 import com.nexora.common.exception.ValidationException;
+import com.nexora.common.util.InputSanitizer;
 import com.nexora.order.repository.OrderItemRepository;
 import com.nexora.product.entity.Product;
 import com.nexora.product.repository.ProductRepository;
@@ -67,7 +68,7 @@ public class ReviewService {
                 .user(user)
                 .product(product)
                 .rating(request.getRating())
-                .comment(request.getComment())
+                .comment(InputSanitizer.sanitizeText(request.getComment()))
                 .build();
 
         return toDto(productReviewRepository.save(review), Optional.of(user));
@@ -79,7 +80,7 @@ public class ReviewService {
         ProductReview review = productReviewRepository.findByIdAndUser(id, user)
                 .orElseThrow(() -> new ResourceNotFoundException("Avis introuvable"));
         review.setRating(request.getRating());
-        review.setComment(request.getComment());
+        review.setComment(InputSanitizer.sanitizeText(request.getComment()));
         return toDto(productReviewRepository.save(review), Optional.of(user));
     }
 
@@ -122,7 +123,7 @@ public class ReviewService {
                 .user(user)
                 .shop(shop)
                 .rating(request.getRating())
-                .comment(request.getComment())
+                .comment(InputSanitizer.sanitizeText(request.getComment()))
                 .build();
 
         return toDto(shopReviewRepository.save(review), Optional.of(user));
@@ -134,7 +135,7 @@ public class ReviewService {
         ShopReview review = shopReviewRepository.findByIdAndUser(id, user)
                 .orElseThrow(() -> new ResourceNotFoundException("Avis introuvable"));
         review.setRating(request.getRating());
-        review.setComment(request.getComment());
+        review.setComment(InputSanitizer.sanitizeText(request.getComment()));
         return toDto(shopReviewRepository.save(review), Optional.of(user));
     }
 

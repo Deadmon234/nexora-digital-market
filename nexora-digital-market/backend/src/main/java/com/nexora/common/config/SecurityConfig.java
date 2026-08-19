@@ -1,8 +1,11 @@
 package com.nexora.common.config;
 
 import com.nexora.auth.security.JwtAuthenticationFilter;
+import com.nexora.security.filter.RateLimitFilter;
+import com.nexora.security.filter.SecurityHeadersFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,6 +29,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final SecurityHeadersFilter securityHeadersFilter;
+    private final ObjectProvider<RateLimitFilter> rateLimitFilterProvider;
 
     private static final String[] PUBLIC_ENDPOINTS = {
             "/api/health",
@@ -57,7 +62,10 @@ public class SecurityConfig {
                     response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                     response.getWriter().write("{\"message\":\"Non authentifié\"}");
                 }))
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(securityHeadersFilter, UsernamePasswordAuthenticationFilter.class);
+        rateLimitFilterProvider.ifAvailable(filter ->
+                http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class));
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

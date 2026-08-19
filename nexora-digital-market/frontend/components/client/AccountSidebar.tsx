@@ -9,6 +9,7 @@ const links = [
   { href: '/account/addresses', label: 'Adresses' },
   { href: '/account/favorites', label: 'Favoris' },
   { href: '/account/orders', label: 'Commandes' },
+  { href: '/account/notifications', label: 'Notifications' },
 ];
 
 export function AccountSidebar() {
@@ -24,7 +25,7 @@ export function AccountSidebar() {
               key={link.href}
               href={link.href}
               className={`block rounded-lg px-3 py-2 text-sm font-medium ${
-                active ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
+                active ? 'bg-nexora-blue text-white' : 'text-slate-700 hover:bg-nexora-blue/5 hover:text-nexora-blue'
               }`}
             >
               {link.label}

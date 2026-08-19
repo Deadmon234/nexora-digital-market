@@ -16,6 +16,8 @@ export default function CartPage() {
     setLoading(true);
     try {
       setCart(await getCart());
+    } catch {
+      setCart({ id: 0, items: [], itemCount: 0, totalAmount: 0 });
     } finally {
       setLoading(false);
     }

@@ -29,7 +29,7 @@ public class CartService {
     private final ProductOfferRepository productOfferRepository;
     private final UserContextService userContextService;
 
-    @Transactional(readOnly = true)
+    @Transactional
     public CartDto getMyCart() {
         Cart cart = getOrCreateCart(userContextService.getCurrentUser());
         return toDto(cart);

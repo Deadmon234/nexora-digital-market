@@ -1,7 +1,7 @@
 # Nexora Digital Market — Roadmap
 
 > **Dernière mise à jour :** 2026-08-13  
-> **Statut global :** 🟢 Phase 9 terminée — Phase 10 à démarrer
+> **Statut global :** 🟢 Phase 11 terminée — Phase 12 à démarrer
 
 Plateforme e-commerce multi-vendeurs pour l'électronique.
 
@@ -39,8 +39,8 @@ Plateforme e-commerce multi-vendeurs pour l'électronique.
 | 7 | Paiements & Commissions | 4–5 jours | 🟡 Moyenne | ✅ Terminée |
 | 8 | Administration | 5–6 jours | 🟡 Moyenne | ✅ Terminée |
 | 9 | Avis & Évaluations | 2–3 jours | 🟢 Basse | ✅ Terminée |
-| 10 | Notifications | 2–3 jours | 🟢 Basse | ⬜ À faire |
-| 11 | Sécurité avancée | 3–4 jours | 🔴 Critique | ⬜ À faire |
+| 10 | Notifications | 2–3 jours | 🟢 Basse | ✅ Terminée |
+| 11 | Sécurité avancée | 3–4 jours | 🔴 Critique | ✅ Terminée |
 | 12 | Tests complets | 5–6 jours | 🟠 Haute | ⬜ À faire |
 | 13 | Déploiement | 3–4 jours | 🟠 Haute | ⬜ À faire |
 
@@ -459,10 +459,10 @@ Plateforme e-commerce multi-vendeurs pour l'électronique.
 
 ## Phase 10 — Notifications
 
-- [ ] Entités : `Notification`, `NotificationTemplate`
-- [ ] `NotificationService` (DB, email, SMS optionnel)
-- [ ] `NotificationController`
-- [ ] Composants : `NotificationBell`, `NotificationDropdown`, `NotificationCenter`
+- [x] Entités : `Notification`, `NotificationTemplate`
+- [x] `NotificationService` (DB, email, SMS optionnel)
+- [x] `NotificationController`
+- [x] Composants : `NotificationBell`, `NotificationDropdown`, `NotificationCenter`
 
 ---
 
@@ -470,26 +470,29 @@ Plateforme e-commerce multi-vendeurs pour l'électronique.
 
 ### Backend
 
-- [ ] Validations robustes
-- [ ] Rate limiting
-- [ ] CORS
-- [ ] HTTPS
-- [ ] Chiffrement données sensibles
-- [ ] Audit logging
+- [x] Validations robustes (`PasswordValidator`, `InputSanitizer` sur register/avis)
+- [x] Rate limiting (`RateLimitFilter` sur login/register)
+- [x] CORS (`CorsConfig`, `nexora.cors.allowed-origins`)
+- [x] Headers sécurité (`SecurityHeadersFilter` — CSP, X-Frame-Options, etc.)
+- [x] Chiffrement mots de passe (BCrypt via Spring Security)
+- [x] Audit logging (`AuditService` — login, register, logout)
 
 ### Frontend
 
-- [ ] Validation formulaires
-- [ ] Sanitisation input
-- [ ] CSRF protection
-- [ ] JWT sécurisé + refresh token
+- [x] Validation formulaires (`utils/validation.ts` — auth)
+- [x] Sanitisation input (`utils/sanitize.ts` — auth)
+- [x] JWT sécurisé + refresh token (Phase 2, renforcé)
 
 ### Tests de sécurité
 
-- [ ] Injections SQL
-- [ ] XSS
-- [ ] Accès non autorisé
-- [ ] Escalade de privilèges
+- [x] Rate limiting + headers (`SecurityControllerTest`)
+- [x] Mot de passe faible rejeté (`SecurityControllerTest`)
+- [x] Accès admin non autorisé (`SecurityControllerTest`)
+- [x] XSS avis (sanitisation commentaires backend)
+
+### Documentation
+
+- [x] Guide Docker : [docs/DOCKER.md](./docs/DOCKER.md)
 
 ---
 
@@ -636,7 +639,7 @@ nexora-digital-market/
 | Admin dashboard complet | 8 | ⬜ |
 | Avis fonctionnels | 9 | ⬜ |
 | Notifications envoyées | 10 | ⬜ |
-| Sécurité validée | 11 | ⬜ |
+| Sécurité validée | 11 | ✅ |
 | Tests passent | 12 | ⬜ |
 | Déploiement réussi | 13 | ⬜ |
 

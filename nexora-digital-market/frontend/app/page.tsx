@@ -1,4 +1,5 @@
 import { CategoryCard } from '@/components/category/CategoryCard';
+import { Logo } from '@/components/brand/Logo';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { SearchBar } from '@/components/search/SearchBar';
@@ -35,21 +36,36 @@ export default async function HomePage() {
   return (
     <MainLayout>
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <section className="rounded-3xl bg-slate-900 px-8 py-12 text-white">
-          <h1 className="text-4xl font-bold">Nexora Digital Market</h1>
-          <p className="mt-4 max-w-2xl text-slate-300">
-            Marketplace e-commerce multi-vendeurs — smartphones, ordinateurs et électronique.
-          </p>
-          <div className="mt-8 max-w-xl">
-            <SearchBar />
+        <section className="relative overflow-hidden rounded-3xl bg-nexora-hero px-8 py-12 text-white shadow-lg">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-nexora-green/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-nexora-blue/30 blur-3xl" />
+          <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-xl">
+              <p className="text-sm font-semibold uppercase tracking-widest text-nexora-green-bright">
+                Nexora Digital Market
+              </p>
+              <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">
+                Construisons votre{' '}
+                <span className="text-nexora-green-bright">avenir numérique</span>
+              </h1>
+              <p className="mt-4 text-lg text-blue-100">
+                Marketplace multi-vendeurs — smartphones, ordinateurs et électronique.
+              </p>
+              <div className="mt-8 max-w-xl">
+                <SearchBar variant="hero" />
+              </div>
+            </div>
+            <div className="hidden shrink-0 rounded-2xl bg-white/10 p-4 backdrop-blur-sm lg:block">
+              <Logo size="lg" href={undefined} className="brightness-110 drop-shadow-lg" />
+            </div>
           </div>
         </section>
 
         <section className="mt-12">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-slate-900">Catégories</h2>
-            <Link href="/categories" className="text-sm text-slate-600 hover:text-slate-900">
-              Voir tout
+            <h2 className="text-2xl font-bold text-nexora-navy">Catégories</h2>
+            <Link href="/categories" className="text-sm font-medium text-nexora-blue hover:text-nexora-blue-dark">
+              Voir tout →
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,9 +77,9 @@ export default async function HomePage() {
 
         <section className="mt-12">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-slate-900">Produits populaires</h2>
-            <Link href="/products" className="text-sm text-slate-600 hover:text-slate-900">
-              Voir le catalogue
+            <h2 className="text-2xl font-bold text-nexora-navy">Produits populaires</h2>
+            <Link href="/products" className="text-sm font-medium text-nexora-blue hover:text-nexora-blue-dark">
+              Voir le catalogue →
             </Link>
           </div>
           <ProductGrid products={products.content} />

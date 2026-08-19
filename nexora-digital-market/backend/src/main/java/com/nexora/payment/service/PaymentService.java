@@ -10,6 +10,7 @@ import com.nexora.payment.dto.PaymentDto;
 import com.nexora.payment.dto.PaymentRequest;
 import com.nexora.payment.entity.Payment;
 import com.nexora.payment.repository.PaymentRepository;
+import com.nexora.order.service.OrderNotificationService;
 import com.nexora.user.entity.User;
 import com.nexora.user.security.UserContextService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class PaymentService {
     private final CustomerOrderRepository orderRepository;
     private final UserContextService userContextService;
     private final CommissionService commissionService;
+    private final OrderNotificationService orderNotificationService;
 
     @Transactional
     public PaymentDto processPayment(PaymentRequest request) {
@@ -58,6 +60,7 @@ public class PaymentService {
         orderRepository.save(order);
 
         commissionService.processCommissions(payment, order);
+        orderNotificationService.notifyPaymentCompleted(order);
 
         return toDto(payment);
     }

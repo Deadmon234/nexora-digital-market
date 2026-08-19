@@ -17,7 +17,7 @@ public class SellerBalanceService {
 
     private final SellerBalanceRepository sellerBalanceRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional
     public SellerBalanceDto getMyBalance(Seller seller) {
         return toDto(getOrCreate(seller));
     }
