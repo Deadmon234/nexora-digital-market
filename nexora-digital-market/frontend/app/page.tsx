@@ -3,6 +3,7 @@ import { Logo } from '@/components/brand/Logo';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { SearchBar } from '@/components/search/SearchBar';
+import { SellerInvitation } from '@/components/seller/SellerInvitation';
 import { API_BASE_URL } from '@/utils/constants';
 import type { Category, PageResponse, ProductSummary } from '@/types/product';
 import Link from 'next/link';
@@ -74,6 +75,10 @@ export default async function HomePage() {
           <div><span className="font-bold text-nexora-coral">02</span><span className="ml-3 text-slate-600">Des produits choisis pour durer</span></div>
           <div><span className="font-bold text-nexora-coral">03</span><span className="ml-3 text-slate-600">Un accompagnement avant et après achat</span></div>
         </section>
+
+        <div className="mt-12">
+          <SellerInvitation />
+        </div>
 
         <section className="mt-14">
           <div className="mb-6 flex items-center justify-between">

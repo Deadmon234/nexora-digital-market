@@ -1,6 +1,7 @@
 'use client';
 
 import { MainLayout } from '@/components/layout/MainLayout';
+import { SellerInvitation } from '@/components/seller/SellerInvitation';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -43,6 +44,9 @@ export default function CheckoutConfirmationPage() {
         <Suspense fallback={<p className="text-slate-600">Chargement...</p>}>
           <ConfirmationContent />
         </Suspense>
+        <div className="mt-8">
+          <SellerInvitation />
+        </div>
       </div>
     </MainLayout>
   );
