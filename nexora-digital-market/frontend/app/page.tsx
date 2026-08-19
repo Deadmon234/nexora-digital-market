@@ -35,37 +35,51 @@ export default async function HomePage() {
 
   return (
     <MainLayout>
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <section className="relative overflow-hidden rounded-3xl bg-nexora-hero px-8 py-12 text-white shadow-lg">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-nexora-green/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-nexora-blue/30 blur-3xl" />
-          <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl">
-              <p className="text-sm font-semibold uppercase tracking-widest text-nexora-green-bright">
-                Nexora Digital Market
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+        <section className="hero-grid relative overflow-hidden rounded-[2rem] px-6 py-12 text-white shadow-xl sm:px-10 lg:px-16 lg:py-16">
+          <div className="absolute -right-16 top-10 h-72 w-72 rounded-full border-[32px] border-nexora-coral/30" />
+          <div className="absolute bottom-[-5rem] right-28 h-40 w-40 rounded-full bg-nexora-green/90" />
+          <div className="relative grid items-end gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="max-w-2xl">
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-nexora-green-bright">
+                Le marché du numérique, autrement
               </p>
-              <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">
-                Construisons votre{' '}
-                <span className="text-nexora-green-bright">avenir numérique</span>
+              <h1 className="display-font mt-5 text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
+                La technologie qui suit <span className="text-nexora-green-bright">votre rythme.</span>
               </h1>
-              <p className="mt-4 text-lg text-blue-100">
-                Marketplace multi-vendeurs — smartphones, ordinateurs et électronique.
+              <p className="mt-6 max-w-lg text-base leading-7 text-slate-300 sm:text-lg">
+                Comparez les offres de vendeurs vérifiés et trouvez le bon équipement pour travailler, créer et jouer.
               </p>
-              <div className="mt-8 max-w-xl">
+              <div className="mt-8 max-w-2xl">
                 <SearchBar variant="hero" />
               </div>
+              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                <span>Vendeurs vérifiés</span><span>Paiement sécurisé</span><span>Livraison suivie</span>
+              </div>
             </div>
-            <div className="hidden shrink-0 rounded-2xl bg-white/10 p-4 backdrop-blur-sm lg:block">
-              <Logo size="lg" href={undefined} className="brightness-110 drop-shadow-lg" />
+            <div className="relative hidden min-h-64 lg:block">
+              <div className="absolute right-0 top-2 w-64 rotate-3 rounded-2xl bg-nexora-ivory p-5 text-nexora-navy shadow-2xl">
+                <p className="text-xs font-bold uppercase tracking-widest text-nexora-coral">Sélection du moment</p>
+                <p className="display-font mt-5 text-3xl">Tout ce qu&apos;il faut pour aller plus loin.</p>
+                <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-3 text-xs font-bold">
+                  <span>Explorer la sélection</span><span className="text-nexora-coral">↗</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="mt-12">
+        <section className="mt-10 grid gap-3 border-y border-slate-200 py-5 text-sm sm:grid-cols-3">
+          <div><span className="font-bold text-nexora-coral">01</span><span className="ml-3 text-slate-600">Des offres comparées en un clin d&apos;œil</span></div>
+          <div><span className="font-bold text-nexora-coral">02</span><span className="ml-3 text-slate-600">Des produits choisis pour durer</span></div>
+          <div><span className="font-bold text-nexora-coral">03</span><span className="ml-3 text-slate-600">Un accompagnement avant et après achat</span></div>
+        </section>
+
+        <section className="mt-14">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-nexora-navy">Catégories</h2>
-            <Link href="/categories" className="text-sm font-medium text-nexora-blue hover:text-nexora-blue-dark">
-              Voir tout →
+            <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-nexora-coral">Choisir son terrain</p><h2 className="display-font mt-1 text-3xl text-nexora-navy">Explorer par catégorie</h2></div>
+            <Link href="/categories" className="text-sm font-bold text-nexora-blue hover:text-nexora-blue-dark">
+              Tout voir ↗
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -75,11 +89,11 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="mt-12">
+        <section className="mt-16">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-nexora-navy">Produits populaires</h2>
-            <Link href="/products" className="text-sm font-medium text-nexora-blue hover:text-nexora-blue-dark">
-              Voir le catalogue →
+            <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-nexora-coral">À ne pas manquer</p><h2 className="display-font mt-1 text-3xl text-nexora-navy">Les essentiels du moment</h2></div>
+            <Link href="/products" className="text-sm font-bold text-nexora-blue hover:text-nexora-blue-dark">
+              Voir le catalogue ↗
             </Link>
           </div>
           <ProductGrid products={products.content} />

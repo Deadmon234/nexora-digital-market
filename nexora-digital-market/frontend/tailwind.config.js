@@ -8,13 +8,15 @@ module.exports = {
     extend: {
       colors: {
         nexora: {
-          blue: '#2563EB',
-          'blue-dark': '#1D4ED8',
-          'blue-deep': '#1E3A8A',
-          green: '#84CC16',
-          'green-bright': '#A3E635',
-          navy: '#0F172A',
-          teal: '#0D9488',
+          blue: '#2364AA',
+          'blue-dark': '#174A80',
+          'blue-deep': '#17212B',
+          green: '#B8D45A',
+          'green-bright': '#D5E98A',
+          navy: '#17212B',
+          teal: '#2D8C89',
+          coral: '#F26B4F',
+          ivory: '#F6F3EE',
         },
       },
       backgroundImage: {

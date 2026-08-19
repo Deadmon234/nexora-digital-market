@@ -9,9 +9,10 @@ export function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-slate-400 hover:shadow-md"
+      className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-nexora-blue/40 hover:shadow-lg"
     >
-      <h3 className="text-lg font-semibold text-slate-900">{category.name}</h3>
+      <span className="mb-8 block text-3xl font-light text-nexora-coral">0{category.id}</span>
+      <h3 className="text-lg font-bold text-slate-900 group-hover:text-nexora-blue">{category.name}</h3>
       {category.description && (
         <p className="mt-2 text-sm text-slate-600">{category.description}</p>
       )}

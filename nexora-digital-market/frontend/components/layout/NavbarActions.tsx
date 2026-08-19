@@ -9,9 +9,9 @@ export function NavbarActions() {
       <NotificationMenu />
       <Link
         href="/auth/login"
-        className="rounded-lg bg-nexora-blue px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-nexora-blue-dark"
+        className="rounded-full bg-nexora-navy px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-nexora-blue"
       >
-        Connexion
+        Se connecter
       </Link>
     </div>
   );

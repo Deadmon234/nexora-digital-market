@@ -14,21 +14,25 @@ const navLinks = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-nexora-ivory/95 backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Logo size="sm" />
-        <nav className="flex flex-wrap items-center justify-end gap-1 text-sm sm:gap-3">
+        <nav className="hidden items-center gap-1 text-sm md:flex lg:gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-lg px-2 py-1.5 font-medium text-slate-700 transition-colors hover:bg-nexora-blue/5 hover:text-nexora-blue"
+              className="rounded-full px-3 py-2 font-semibold text-slate-600 transition-colors hover:bg-white hover:text-nexora-blue"
             >
               {link.label}
             </Link>
           ))}
           <NavbarActions />
         </nav>
+        <div className="flex items-center gap-3 md:hidden">
+          <Link href="/products" className="text-sm font-bold text-nexora-blue">Boutique</Link>
+          <NavbarActions />
+        </div>
       </div>
     </header>
   );
