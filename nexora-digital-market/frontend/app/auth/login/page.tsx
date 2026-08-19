@@ -52,30 +52,39 @@ export default function LoginPage() {
     'mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-nexora-navy outline-none transition placeholder:text-slate-400 focus:border-nexora-blue focus:bg-white focus:ring-4 focus:ring-nexora-blue/10';
 
   return (
-    <main className="min-h-screen bg-[#edf3f8] px-4 py-6 sm:px-8 sm:py-10">
-      <div className="mx-auto grid min-h-[calc(100vh-3rem)] w-full max-w-6xl overflow-hidden rounded-[2rem] bg-white shadow-[0_24px_80px_rgba(9,42,92,0.14)] lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="relative hidden overflow-hidden bg-nexora-navy p-12 text-white lg:flex lg:flex-col lg:justify-between">
-          <div className="absolute -bottom-20 -right-14 h-72 w-72 rounded-full border-[36px] border-nexora-green/25" />
-          <div className="absolute right-16 top-28 h-16 w-16 rounded-full bg-nexora-green/80" />
+    <main className="auth-stage min-h-screen px-3 py-3 sm:px-6 sm:py-6 lg:px-10">
+      <div className="mx-auto grid min-h-[calc(100vh-1.5rem)] w-full max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-[0_28px_100px_rgba(9,42,92,0.18)] lg:min-h-[calc(100vh-3rem)] lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="auth-panel-pattern relative hidden overflow-hidden p-8 text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
+          <div className="absolute -bottom-28 -right-20 h-[28rem] w-[28rem] rounded-full border-[2px] border-nexora-green/40" />
+          <div className="absolute -bottom-16 -right-8 h-80 w-80 rounded-full border-[18px] border-nexora-green/20" />
+          <div className="absolute right-24 top-24 h-20 w-20 rounded-full bg-nexora-green/90 shadow-[0_0_0_12px_rgba(97,227,62,0.1)]" />
+          <div className="absolute left-12 top-1/2 h-2 w-24 bg-nexora-coral" />
           <div className="relative">
-            <div className="inline-flex rounded-2xl bg-white px-4 py-3">
+            <div className="flex items-center justify-between">
+              <div className="inline-flex rounded-2xl bg-white px-4 py-3 shadow-xl">
               <Logo size="sm" />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">N / 01</span>
             </div>
-            <p className="mt-16 text-xs font-bold uppercase tracking-[0.24em] text-nexora-green-bright">Bienvenue chez Nexora</p>
-            <h2 className="display-font mt-4 max-w-sm text-5xl leading-[1.02]">Votre prochain équipement commence ici.</h2>
-            <p className="mt-6 max-w-sm text-sm leading-6 text-slate-300">Retrouvez vos commandes, vos favoris et les meilleures offres du marché numérique.</p>
+              <p className="mt-20 text-xs font-bold uppercase tracking-[0.24em] text-nexora-green-bright">Votre boutique numérique</p>
+            <h2 className="display-font mt-4 max-w-lg text-6xl leading-[0.94]">Retrouvez tout ce que vous aimez.</h2>
+            <p className="mt-7 max-w-sm text-sm leading-6 text-slate-300">Un compte pour suivre vos commandes, retrouver vos favoris et acheter en toute confiance.</p>
+            <div className="mt-12 grid max-w-sm grid-cols-2 gap-3">
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"><p className="text-2xl font-bold text-nexora-green-bright">01</p><p className="mt-2 text-xs leading-5 text-slate-300">Des offres sélectionnées</p></div>
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"><p className="text-2xl font-bold text-nexora-green-bright">✓</p><p className="mt-2 text-xs leading-5 text-slate-300">Paiement sécurisé</p></div>
+            </div>
           </div>
-          <p className="relative text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Le numérique, en confiance</p>
+          <div className="relative flex items-end justify-between text-xs font-semibold uppercase tracking-[0.18em] text-slate-400"><span>Le numérique, en confiance</span><span>2026</span></div>
         </div>
 
-        <div className="flex items-center justify-center p-6 sm:p-12">
+        <div className="flex items-center justify-center p-6 sm:p-12 lg:p-16">
           <div className="w-full max-w-md">
             <div className="mb-8 lg:hidden">
               <Logo size="md" />
             </div>
             <div className="mb-8">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-nexora-coral">Espace personnel</p>
-              <h1 className="mt-3 text-3xl font-bold text-nexora-navy">Bon retour parmi nous</h1>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-nexora-coral">Mon compte / Connexion</p>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-nexora-navy">Prêt à reprendre vos achats ?</h1>
               <p className="mt-2 text-sm text-slate-600">
                 Pas encore de compte ?{' '}
                 <Link href="/auth/register" className="font-bold text-nexora-blue hover:text-nexora-blue-dark">
@@ -120,7 +129,7 @@ export default function LoginPage() {
               {loading ? 'Connexion...' : 'Se connecter'}
             </Button>
             </form>
-            <p className="mt-8 text-center text-xs text-slate-400">Accès sécurisé à votre compte Nexora</p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-slate-400"><span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-nexora-green" /> Paiement sécurisé</span><span>•</span><span>Livraison suivie</span></div>
           </div>
         </div>
       </div>

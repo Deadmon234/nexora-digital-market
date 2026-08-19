@@ -30,6 +30,20 @@ body {
   letter-spacing: 0;
 }
 
+.auth-stage {
+  background-color: #eaf1f7;
+  background-image: linear-gradient(rgba(9, 42, 92, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(9, 42, 92, 0.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.auth-panel-pattern {
+  background-color: #092a5c;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
 @layer utilities {
   .text-gradient-nexora {
     background: linear-gradient(90deg, #1264c8 0%, #08a86a 100%);
