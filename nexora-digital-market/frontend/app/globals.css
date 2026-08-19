@@ -9,8 +9,8 @@ html {
 body {
   margin: 0;
   font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-  background: #f6f3ee;
-  color: #17212b;
+  background: #f5f8fc;
+  color: #092a5c;
 }
 
 ::selection {
@@ -19,7 +19,7 @@ body {
 }
 
 .hero-grid {
-  background-color: #17212b;
+  background-color: #092a5c;
   background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 42px 42px;
@@ -32,7 +32,7 @@ body {
 
 @layer utilities {
   .text-gradient-nexora {
-    background: linear-gradient(90deg, #2563eb 0%, #84cc16 100%);
+    background: linear-gradient(90deg, #1264c8 0%, #08a86a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

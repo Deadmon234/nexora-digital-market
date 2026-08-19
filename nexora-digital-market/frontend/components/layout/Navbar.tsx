@@ -14,7 +14,7 @@ const navLinks = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-nexora-ivory/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-nexora-ivory/95 shadow-[0_1px_0_rgba(9,42,92,0.03)] backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Logo size="sm" />
         <nav className="hidden items-center gap-1 text-sm md:flex lg:gap-2">
