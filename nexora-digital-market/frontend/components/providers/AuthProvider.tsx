@@ -47,7 +47,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     () => ({
       user,
       isLoading,
-      isAuthenticated: !!user || isAuthenticated(),
+      isAuthenticated: !isLoading && (!!user || isAuthenticated()),
       login,
       register,
       logout,
