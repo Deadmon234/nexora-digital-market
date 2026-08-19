@@ -34,8 +34,13 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      await login({ email: sanitizeEmail(email), password });
-      router.push('/');
+      const response = await login({ email: sanitizeEmail(email), password });
+      const destination = response.user.roles.includes('ROLE_ADMIN')
+        ? '/admin'
+        : response.user.roles.includes('ROLE_SELLER')
+          ? '/seller'
+          : '/';
+      router.push(destination);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur de connexion');
     } finally {

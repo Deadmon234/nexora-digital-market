@@ -1,15 +1,21 @@
 'use client';
 
+'use client';
+
 import { Navbar } from '@/components/layout/Navbar';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { useAuth } from '@/components/providers/AuthProvider';
 import Link from 'next/link';
 
 export function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
   const isAdmin = user?.roles?.includes('ROLE_ADMIN');
 
-  if (user && !isAdmin) {
+  if (isLoading) {
+    return <div className="min-h-screen bg-gray-50" />;
+  }
+
+  if (!isAdmin) {
     return (
       <div className="min-h-screen bg-gray-50">
         <Navbar />
