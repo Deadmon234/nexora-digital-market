@@ -1,6 +1,7 @@
 'use client';
 
 import { login as loginApi, logout as logoutApi, register as registerApi } from '@/services/auth.service';
+import { getProfile } from '@/services/account.service';
 import type { AuthResponse, AuthUser, LoginPayload, RegisterPayload } from '@/types/auth';
 import { clearTokens, isAuthenticated } from '@/utils/auth-storage';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
@@ -22,7 +23,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(false);
+    let active = true;
+
+    async function restoreSession() {
+      if (!isAuthenticated()) {
+        if (active) setIsLoading(false);
+        return;
+      }
+
+      try {
+        const profile = await getProfile();
+        if (active) {
+          setUser({ ...profile, roles: profile.roles as AuthUser['roles'] });
+        }
+      } catch {
+        if (active) {
+          setUser(null);
+          clearTokens();
+        }
+      } finally {
+        if (active) setIsLoading(false);
+      }
+    }
+
+    restoreSession();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const login = useCallback(async (payload: LoginPayload) => {
